@@ -1,26 +1,26 @@
-import React from 'react'
+import { List } from "./ContactList.styled";
 
-const ContactList = ({contacts}) => {
-  return (
+const ContactList = ({ contacts, deleteContact }) => {
+    return (
+      <List>
       <div>
           <ul>
               {contacts.map((contact) => (
-                  <li key={contact.id}>{contact.name}: {contact.number}</li>
+                  <li key={contact.id}>{contact.name}: {contact.number}
+                      <button
+			            type='button'
+                        className='btn-close'
+                        onClick={()=> deleteContact(contact.id)}
+                      >
+                          Delete
+                    </button>
+                  </li>
               ))}
           </ul>
-      </div>
+        </div>
+        </List>
   )
 }
 
 export default ContactList;
 
-
-/**
- * <button
-			type='button'
-      className='btn-close'
-      aria-label='Close'
-      // викликаємо коллбєком, так як потрібно передати id, а ні евент
-      onClick={()=> handleDelete(contact.id)}
-		></button>
- */

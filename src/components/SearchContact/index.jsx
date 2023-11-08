@@ -1,25 +1,21 @@
-// import React from 'react'
+import { Search } from "./SearchContact.styled";
 
-const SearchBar = ({ filter, handleSearchChange }) => {
-
-  return (
-    <div>
-      <label>Find contacts by name</label>
-      <input
-        type="text"
-        value={filter}
-        onChange={handleSearchChange}
-      />
-    </div>
+const SearchContact = ({ filter, handleSearchChange }) => {
+	return (
+	  <Search>
+    	<div>
+      	<label>Find contacts by name</label>
+      	<input
+        	type="text"
+        	value={filter}
+        	onChange={handleSearchChange}
+      	/>
+		</div>
+	</Search>
   );
 };
 
-export default SearchBar;
-
-
-
-
-
+export default SearchContact;
 
 
 
@@ -39,4 +35,6 @@ export default SearchBar;
 //   )
 // }
 
-// export default SearchContact
+// render() {
+//     const { filter, handleFilterChange } = this.props;
+//     return ()

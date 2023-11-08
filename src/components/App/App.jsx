@@ -1,17 +1,12 @@
 import { Component } from "react";
 import { nanoid } from "nanoid";
-import CreateContact from './CreateContact';
-import ContactList from "./ContactList";
-import SearchContact from "./SearchContact";
+import CreateContact from '../CreateContact';
+import ContactList from "../ContactList";
+import SearchContact from "../SearchContact";
+import { AppContainer, Header } from "./App.styled"; 
 
 class App extends Component {
 
-//   state = {
-//     contacts: [],
-//     filter: '',
-//     name: '',
-//     number: ''
-// }
   state = {
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -20,11 +15,11 @@ class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   createContact = (contact) => {
+    const isAlreadyExist = this.state.contacts.some((el) => el.name.toLowerCase() === contact.name.toLowerCase());
+    if (isAlreadyExist) return alert(`${contact.name} is already in contacts.`);
     const newContact = {
       ...contact,
       id: nanoid(),
@@ -45,27 +40,25 @@ class App extends Component {
     );
   };
 
-  // searchContact = (searchQuery) => {
-  //   this.setState((prev) => ({
-  //     filter: prev.contacts.filter((el) => 
-  //       el.name.toLowerCase().includes(searchQuery.toLowerCase())
-  //     ),
-  //   }))
-  // }
-  
+  deleteContact = (id) => {
+    this.setState((prev) => ({
+      contacts: prev.contacts.filter(el => el.id !== id),
+    }))
+  }
+
   render() {
     const { filter } = this.state;
     const filteredContacts = this.searchContact();
     return (
-      <>
-        <h2>Phonebook</h2>
+      <AppContainer>
+        <Header>Phonebook</Header>
         <CreateContact createContact={this.createContact} />
-        <h2>Contacts</h2>
+        <Header>Contacts</Header>
         {/* <SearchContact searchContact={this.searchContact} /> */}
         <SearchContact filter={filter} handleSearchChange={this.handleSearchChange} />
         {/* <ContactList contacts={this.state.contacts} /> */}
-        <ContactList contacts={filteredContacts} />
-      </>
+        <ContactList contacts={filteredContacts} deleteContact={this.deleteContact} />
+      </AppContainer>
     );
   }
 }
