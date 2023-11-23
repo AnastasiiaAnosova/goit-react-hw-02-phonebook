@@ -30,6 +30,7 @@ class App extends Component {
   }  
 
   handleSearchChange = (e) => {
+    // console.log('target value', e.target.value);
     this.setState({ filter: e.target.value });
   };
 
@@ -47,15 +48,15 @@ class App extends Component {
   }
 
   render() {
-    const { filter } = this.state;
+    // const { filter } = this.state;
     const filteredContacts = this.searchContact();
     return (
       <AppContainer>
         <Header>Phonebook</Header>
         <CreateContact createContact={this.createContact} />
         <Header>Contacts</Header>
-        {/* <SearchContact searchContact={this.searchContact} /> */}
-        <SearchContact filter={filter} handleSearchChange={this.handleSearchChange} />
+        {/* <SearchContact filter={filter} handleSearchChange={this.handleSearchChange} /> */}
+        <SearchContact handleSearchChange={this.handleSearchChange} />
         {/* <ContactList contacts={this.state.contacts} /> */}
         <ContactList contacts={filteredContacts} deleteContact={this.deleteContact} />
       </AppContainer>

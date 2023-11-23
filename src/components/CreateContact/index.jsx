@@ -23,7 +23,6 @@ class CreateContact extends Component {
     // handleChange = (event) => {
     //     this.setState({ name: event.target.value });
     // }
-
     //коли було тільки імʼя
     // handleChange = ({target: {value}}) => {
     //     this.setState({ name: value });
@@ -35,16 +34,6 @@ class CreateContact extends Component {
     render() {
         const { name, number } = this.state;
         return (
-            // <FormContainer>
-            // <form onSubmit={this.handleSubmit}>
-            //     <label>Name</label>
-            //     <input type="text" name="name" value={name} onChange={this.handleChange} required />
-            //     <label>Number</label>
-            //     <input type="tel" name="number" value={number} onChange={this.handleChange} required />
-            //     <button type="submit">Add contact</button>
-            //  </form>
-            // </FormContainer>
-
             <FormContainer onSubmit={this.handleSubmit}>
                 <div>
                 <label>Name</label>

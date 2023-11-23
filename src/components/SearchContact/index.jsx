@@ -7,7 +7,7 @@ const SearchContact = ({ filter, handleSearchChange }) => {
       	<label>Find contacts by name</label>
       	<input
         	type="text"
-        	value={filter}
+			value={filter}
         	onChange={handleSearchChange}
       	/>
 		</div>
@@ -17,24 +17,3 @@ const SearchContact = ({ filter, handleSearchChange }) => {
 
 export default SearchContact;
 
-
-
-// const SearchContact = ({searchContact}) => {
-// 	const handleSearchChange = ({ target: { value } }) => {
-// 		searchContact(value);
-// 	}
-
-//   return (
-// 	  <div>
-// 		  <label>Find contacts by name</label>
-// 		  <input
-// 			type="text"
-//         	onChange={handleSearchChange}
-//         />
-//    </div>
-//   )
-// }
-
-// render() {
-//     const { filter, handleFilterChange } = this.props;
-//     return ()
